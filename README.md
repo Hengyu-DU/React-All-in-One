@@ -12,7 +12,7 @@
 4. Redux 🛠
 5. React扩展知识 🆕
 6. antd、Ajax请求方式等其他知识 🪐
-
+（移动端开发请移步 => [移动端开发核心要点](https://github.com/Hengyu-DU/Mobile-Development)）
 
 
 ![React基础知识速查表（预览）](/React基础速查表/react-preview-big.jpg)
