@@ -1,0 +1,31 @@
+.login-wrapper{
+  padding: 0.1rem;
+}
+
+.adm-list-default {
+  border: none
+}
+
+.footer{
+  margin-top: 0.2rem;
+  padding: 0.1rem;
+  text-align: center;
+  color: rgb(187, 186, 186);
+}
+#policy{
+  text-decoration: none !important;
+}
+
+.submit-btn{
+  margin-top: 0.2rem;
+}
+
+.active{
+  pointer-events: auto;
+  color: #E1251B;
+}
+
+.unactive{
+  pointer-events: none;
+  color: gray;
+}
