@@ -13,19 +13,61 @@
 
 
 
-![React基础知识速查表（预览）](C:\Users\victo\Desktop\source\Q  React\React基础速查表\react-preview-big.jpg)
+![React基础知识速查表（预览）](/React基础速查表/react-preview-big.jpg)
 
-React基础知识速查表，含pdf版和xlsx版（共3页，下载地址：）
+**React基础知识速查表，含[pdf版](https://github.com/Hengyu-DU/React-All-in-One/blob/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8.pdf)和[xlsx版](https://github.com/Hengyu-DU/React-All-in-One/blob/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8/React.xlsx)（共3页，[点击下载](https://github.com/Hengyu-DU/React-All-in-One/tree/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8)）**
 
 # 目录
 
-[toc]
+- [目录](#目录)
+- [第1章 React基础使用](#第1章-react基础使用)
+  - [1.1 React](#11-react)
+  - [1.2 模块与组件、模块化与组件化的理解](#12-模块与组件模块化与组件化的理解)
+  - [1.3 React应用（基于React脚手架）](#13-react应用基于react脚手架)
+- [第2章 React组件式开发应用](#第2章-react组件式开发应用)
+  - [2.1 学习笔记](#21-学习笔记)
+  - [2.2 功能界面的组件化编码流程](#22-功能界面的组件化编码流程)
+  - [2.3 react 脚手架配置代理总结](#23-react-脚手架配置代理总结)
+  - [2.4 GitHub搜索案例](#24-github搜索案例)
+  - [2.5 消息订阅与发布](#25-消息订阅与发布)
+- [第3章 React路由](#第3章-react路由)
+  - [3.1 相关理解](#31-相关理解)
+  - [3.2 路由的基本使用](#32-路由的基本使用)
+  - [3.3 路由组件与一般组件](#33-路由组件与一般组件)
+  - [3.4 NavLink的使用](#34-navlink的使用)
+  - [3.5 Switch的使用](#35-switch的使用)
+  - [3.6 解决样式丢失的问题](#36-解决样式丢失的问题)
+  - [3.7 路由的模糊匹配和严格匹配](#37-路由的模糊匹配和严格匹配)
+  - [3.8 Redirect的使用](#38-redirect的使用)
+  - [3.9 嵌套路由](#39-嵌套路由)
+  - [3.10 给路由组件传递参数](#310-给路由组件传递参数)
+  - [3.11 replace与push](#311-replace与push)
+  - [3.12 编程式路由导航](#312-编程式路由导航)
+  - [3.13 withRouter()](#313-withrouter)
+  - [3.14 BrowserRouter与HashRouter的区别](#314-browserrouter与hashrouter的区别)
+- [第4章 Redux](#第4章-redux)
+  - [4.1  redux简介](#41--redux简介)
+  - [4.2  求和案例 redux迷你版](#42--求和案例-redux迷你版)
+  - [4.3  求和案例 redux完整版](#43--求和案例-redux完整版)
+  - [4.4 异步action](#44-异步action)
+  - [4.5  react-redux的基本使用](#45--react-redux的基本使用)
+  - [4.6 优化](#46-优化)
+  - [4.7 数据共享版，reducer合并](#47-数据共享版reducer合并)
+  - [4.8 开发者工具Redux DevTools Extension](#48-开发者工具redux-devtools-extension)
+  - [4.9 纯函数和高阶函数](#49-纯函数和高阶函数)
+- [第5章 React扩展知识及总结](#第5章-react扩展知识及总结)
+  - [5.1 setState](#51-setstate)
+  - [5.2 LazyLoad](#52-lazyload)
+  - [5.3 Hooks](#53-hooks)
+  - [5.4 Fragment](#54-fragment)
+  - [5.5 Context](#55-context)
+  - [5.6 组件间通信方式总结](#56-组件间通信方式总结)
 
 # 第1章 React基础使用
 
-基本语法参见React基础知识速查表，含pdf版和xlsx版（共3页，下载地址：）
+基本语法参见React基础知识速查表，含[pdf版](https://github.com/Hengyu-DU/React-All-in-One/blob/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8.pdf)和[xlsx版](https://github.com/Hengyu-DU/React-All-in-One/blob/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8/React.xlsx)（共3页，[点击下载](https://github.com/Hengyu-DU/React-All-in-One/tree/master/React%E5%9F%BA%E7%A1%80%E9%80%9F%E6%9F%A5%E8%A1%A8)）：
 
-![](C:\Users\victo\Desktop\source\Q  React\React基础速查表\react-preview-small.jpg)
+![](/React基础速查表/react-preview-small.jpg)
 
 
 
@@ -102,7 +144,7 @@ export default class App extends Component {
 
 ## 2.2 功能界面的组件化编码流程
 
-### 2.2.1 通用流程
+### 2.2.1 通用流程  <!-- omit in toc -->
 
 1. 拆分组件：根据功能点划分组件。
 2. 实现静态组件：使用组件实现静态页面效果
@@ -117,12 +159,12 @@ export default class App extends Component {
 
 * 状态在哪里，操作状态的方法就在哪里
 
-### 2.2.2 关于父子之间通信
+### 2.2.2 关于父子之间通信 <!-- omit in toc -->
 
 1. 【父组件】给【子组件】传递数据：通过props传递
 2. 【子组件】给【父组件】传递数据：通过props传递，要求父提前给子传递一个有形参的函数
 
-### 2.2.3 关于check框
+### 2.2.3 关于check框 <!-- omit in toc -->
 
 * checked:
   - 不仅仅展示勾选的状态，后期还需要响应勾选的动作
@@ -133,7 +175,7 @@ export default class App extends Component {
 
 * value和defaultValue也是同理的。
 
-### 2.2.4 关于uuid (Universally Unique Identifier)
+### 2.2.4 关于uuid (Universally Unique Identifier) <!-- omit in toc -->
 
 ```powershell
 $ npm i uuid
@@ -304,7 +346,7 @@ PubSub.unsubscribe(this.msgid) // 取消订阅
 
 ## 3.4 NavLink的使用
 
-### 3.4.1 基本使用
+### 3.4.1 基本使用 <!-- omit in toc -->
 
 首先引入：
 import {NavLink} from 'react-router-dom'
@@ -325,7 +367,7 @@ import {NavLink} from 'react-router-dom'
       }
 ```
 
-### 3.4.2 封装NavLink
+### 3.4.2 封装NavLink <!-- omit in toc -->
 
 封装一个MyNavLink：
 
@@ -520,7 +562,7 @@ export default withRouter(Header)
 
 # 第4章 Redux
 
-##  4.1  redux简介
+## 4.1  redux简介
 
 **1. redux是什么？**
 
@@ -543,9 +585,9 @@ export default withRouter(Header)
          |- store.js
    ```
 
-##  4.2  求和案例 redux迷你版
+## 4.2  求和案例 redux迷你版
 
-##  4.3  求和案例 redux完整版
+## 4.3  求和案例 redux完整版
 
 总体需要安装的包：
 
@@ -563,7 +605,7 @@ store.subscribe(()=>{
 })
 ```
 
-##  4.4 异步action
+## 4.4 异步action
 
 引入 applyMiddleware
 引入 thunk
@@ -636,7 +678,7 @@ export const creatIncrementAsyncAction = (value,time) => {
 
 ## 4.6 优化
 
-### 4.6.1 容器优化
+### 4.6.1 容器优化 <!-- omit in toc -->
 
 mapDispatchToProps也可简单地定义为对象，此时react-redux会自动dispatch其中value为action的内容，如遇addasync这种返回一个函数的，走异步action流程。
 
@@ -652,7 +694,7 @@ const mapDispatchToProps = {
 export default connect(mapStateToProps,mapDispatchToProps)(CountUI)
 ```
 
-### 4.6.2 Provider
+### 4.6.2 Provider <!-- omit in toc -->
 
 有了Provier, App.jsx中靠props给容器组件Count传进去的store可以删去，也免去了未来有多个容器组件需要store的麻烦。直接在index.js中，为App组件包一个Provider。
 
@@ -673,7 +715,7 @@ ReactDOM.render(
 
 ```
 
-### 4.6.3 一个组件要和redux“打交道”要经过哪几步
+### 4.6.3 一个组件要和redux“打交道”要经过哪几步 <!-- omit in toc -->
 
 1. 定义好UI组件——不暴露
 2. 引入connect生产一个容器组件，并暴露，写法如下：
@@ -725,7 +767,7 @@ const store = createStore(reducer, composeWithDevTools(
 
 ## 4.9 纯函数和高阶函数
 
-### 4.9.1 纯函数
+### 4.9.1 纯函数 <!-- omit in toc -->
 
 1. 一类特别的函数：只要同样的输入（实参），必定得到同样的输出（返回）
 2. 必须遵守以下一些约束
@@ -737,7 +779,7 @@ const store = createStore(reducer, composeWithDevTools(
 3. redux的reducer函数必须是一个纯函数：
    ！！！ 一定不要使用push\unshift等改变原数据的API
 
-### 4.9.2 高阶函数
+### 4.9.2 高阶函数 <!-- omit in toc -->
 
 1. 理解：一类特别的函数
 
@@ -823,18 +865,18 @@ const About = lazy(()=>{return import('./About')})
 
 ## 5.3 Hooks
 
-### 5.3.1 Hooks是什么？
+### 5.3.1 Hooks是什么？ <!-- omit in toc -->
 
 1. Hook是React 16.8.0版本增加的新特性/新语法
 2. 可以让你在【函数组件】中使用 state 以及 其它的 React 特性
 
-### 5.3.2 三个常用的Hook
+### 5.3.2 三个常用的Hook <!-- omit in toc -->
 
 1. State Hook： React.useState()
 2. Effect Hook: React.useEffect()
 3. Ref Hook: React.useRef()
 
-### 5.3.3 State Hook
+### 5.3.3 State Hook <!-- omit in toc -->
 
 1. State Hook 让函数组件也可以有state状态，并进行状态数据的读写操作
 2. 语法： const [xxx, setXxx] = React.useState(initValue)
@@ -855,7 +897,7 @@ const About = lazy(()=>{return import('./About')})
     setSum(sum => sum+3) // 完整版 稳定性更高
 ```
 
-### 5.3.4 Effect Hook
+### 5.3.4 Effect Hook <!-- omit in toc -->
 
 1. Effect Hook 可以让你在函数组件中执行副作用操作，用于模拟类式组件中的生命周期勾子
 2. React中的副作用操作：
@@ -898,7 +940,7 @@ componentWillUnmount():
   },[])
 ```
 
-### 5.3.5 Ref Hook
+### 5.3.5 Ref Hook <!-- omit in toc -->
 
 1. Ref Hook可以在函数组件中存储/查找组件内的标签或任意其它数据
 2. 语法：
