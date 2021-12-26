@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getSnapshotBeforeUpdate</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <style>
+        .list{
+            width: 200px;
+            height: 150px;
+            background-color: wheat;
+            overflow: auto;
+        }
+        .list div{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            box-sizing: border-box;
+            border: 1px grey solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+        class News extends React.Component{
+            state = {newsArr:[]}
+
+            componentDidMount(){
+                this.timer = setInterval(
+                   () => {
+                       // 获取原来的新闻
+                       const {newsArr} = this.state
+                       // 弄出来一个新的新闻
+                       const n = "新闻"+ (newsArr.length+1)
+                       // 更新状态
+                       this.setState({newsArr:[n,...newsArr]})
+                   },1000 
+                )
+            }
+            componentWillUnmount(){
+                console.log('componentWillUnmount');
+                clearInterval(this.timer)
+            }
+
+            getSnapshotBeforeUpdate(){
+              console.log(this.refs.list.scrollHeight);
+                return this.refs.list.scrollHeight
+            }
+
+            componentDidUpdate(_,__,sv){
+              this.refs.list.scrollTop += this.refs.list.scrollHeight - sv
+              console.log(this.refs.list.scrollTop);
+            }
+
+            render(){
+                return(
+                    <div className="list" ref="list">
+                        {
+                            this.state.newsArr.map((news,index)=>{
+                                return <div key={index}>{news}</div>
+                            })
+                        }
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<News/>,document.getElementById('test'))
+    </script>
+</body>
+
+</html>

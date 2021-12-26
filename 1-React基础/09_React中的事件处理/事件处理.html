@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件处理</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <style>
+        .container{
+            width: 400px;
+            height: 400px;
+            background: wheat;
+        }
+        .child{
+            width: 200px;
+            height: 200px;
+            background-color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+       /**
+* 1. 通过onXxxx属性指定事件处理函数（注意大小写）
+*   1） React使用的是自定义（合成）事件，而不是使用的原生DOM事件
+*   2） React中的事件是通过事件委托方式处理的（委托给组件最外层的元素）
+* 2. 通过event.target得到事件发生的DOM元素对象
+        * 
+        * 
+       */
+        class Demo extends React.Component{
+            render(){
+                return(
+                    <div className="container" onClick={this.test}>
+                        <button onClick={this.show1}>按钮1</button>
+                        <button onClick={this.show2}>按钮2</button>
+                        <div onClick={this.show3} className="child">xxx</div>
+                    </div>
+                )
+            }
+            show1 = (event)=>{
+                event.stopPropagation() // 阻止事件冒泡
+                console.log("按钮1");
+            }
+            show2 = (event)=>{
+                console.log("按钮2",event.target.innerText);
+            }
+            show3 = ()=>{
+                console.log("按钮3");
+            }
+            test = (event)=>{
+                console.log('test',event.target);
+            }
+        }
+
+        ReactDOM.render(<Demo/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

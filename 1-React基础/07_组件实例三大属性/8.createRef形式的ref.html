@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>createRef形式的ref</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <!-- 引入prop-types，用于对标签属性进行限制-->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+    class Demo extends React.Component{
+        container = React.createRef()
+        container2 = React.createRef()
+        render(){
+            return(
+                <div>
+                    <input type="text" ref={this.container} />
+                    <button onClick={this.show}>点我提示左侧数据</button>
+                    <input type="text" ref={this.container2} onBlur={this.show2} placeholder="失去焦点提示数据"/>
+                </div>
+            )
+        }
+        
+        show = ()=>{
+            console.log(this.container); // {current: input}
+            alert(this.container.current.value)
+        }
+        show2 = ()=>{
+            alert(this.container2.current.value)
+        }
+
+    }
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+    </script>
+</body>
+
+</html>

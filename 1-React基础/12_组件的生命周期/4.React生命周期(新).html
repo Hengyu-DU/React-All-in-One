@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React生命周期(新)</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <style>
+        .a{
+            width: 400px;
+            height: 400px;
+            background-color: wheat;
+        }
+        .b{
+            background-color: navy;
+            color: aliceblue;
+            width: 300px;
+            font-weight: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+    <!-- 
+
+        新的hook的区别：
+        1. 取消了 componentWillMount
+                  componentWillReceiveProps
+                  componentWillUpdate
+        2. 新增了 getDerivedFromProps
+                  getSnapshotBeforeUpdate
+
+
+     -->
+    <script type="text/babel">
+        class Count extends React.Component {
+
+            // 构造器
+            constructor() {
+                console.log('constructor');
+                super()
+                this.state = {
+                    count: 3
+                }
+            }
+
+            // 从props中获得派生的状态
+            // 当组件中的state完全取决于外部传来的prop时，就要用该钩子
+            // static getDerivedStateFromProps(props,state){
+            //     console.log('getDerivedStatedFromProps',state);
+            //     return {count:props.a}
+            // }
+
+            // 控制组件是否更新
+            shouldComponentUpdate(){
+                console.log('__shouldComponentUpdate');
+                // return false
+                return false
+            }
+
+            getSnapshotBeforeUpdate(){
+                console.log('getSnapshotBeforeUpdate');
+                return 'hello world!~!~!~!'
+            }
+
+            componentDidUpdate(prevProps,prevState,snapshotValue){
+                console.log('componentDidUpdate',prevProps,prevState,snapshotValue);
+            }
+            // componentDidUpdate(_,_,snapshotValue){
+            //     console.log('componentDidUpdate',snapshotValue);
+            // }
+
+            // 业务逻辑的回调函数
+            add = () => {
+                const { count } = this.state
+                this.setState({ count: count + 1 })
+            }
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+            mandate = () => {
+                this.forceUpdate()
+            }
+
+            
+            render() {
+                console.log('render');
+                return (
+                    <div>
+                        <h1>当前求和为：{this.state.count}</h1>
+                        <button onClick={this.add}>点我+1</button>
+                        <button onClick={this.death}>点我卸载组件</button>
+                        <button onClick={this.mandate}>不加不减，强制调用render</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Count a={222} />, document.getElementById('test'))
+
+    </script>
+</body>
+
+</html>

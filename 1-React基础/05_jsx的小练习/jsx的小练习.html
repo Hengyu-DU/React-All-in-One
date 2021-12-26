@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jsx的小练习</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+        /**
+         * 一定注意区分JS语句（代码）和JS表达式
+         * 1.JS表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方
+         *      （1） a
+         *      （2） a + b
+         *      （3） demo(1)
+         *      （4） arr.map()
+         *      （5） function test(){}
+         * 2.JS语句（代码）：
+         *      （1） if
+         *      （2） for(){}
+         *      （3） switch(){case:xxx}
+         * 
+        */
+        // 模拟一些数据
+        const data = ['Angular','React','Vue']
+        // 1.创建虚拟DOM
+        const VDOM = (
+            <div>
+            <h1>前端JS框架列表</h1>
+            <ul>
+                {
+                    //data.map((item,index)=>{
+                    //    return <li key={index}>{item}</li>
+                    // }) 箭头函数可以精简如下：
+                    data.map((item,index)=><li key={index}>{item}</li>)
+                } 
+                
+            </ul>
+            </div>
+        )
+
+        // 2.渲染虚拟DOM到页面
+        ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

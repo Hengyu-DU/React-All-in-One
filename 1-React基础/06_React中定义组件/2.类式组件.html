@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类式组件</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+        // 1.定义一个组件（类式）
+      class Demo extends React.Component{
+          /**
+           * 1. render方法是放在哪里的？ ———— Demo的原型对象上，供实例使用
+           * 2. render中的this是谁？ ———— Demo的实例对象
+          */
+        render(){
+            console.log(this); // Demo类的实例对象 <=> Demo组件的实例对象 <=> 也称“Demo组件对象”
+            return <h2>我是用类定义的组件（适用于【复杂组件】的定义）</h2>
+        }
+      }
+      // 2.渲染组件到页面
+      ReactDOM.render(<Demo/>, document.getElementById('test'))
+       /**
+         * 执行了ReactDOM.render(<Demo/>...后发生了什么)
+         *  1.React解析组件标签，寻找Demo组件的定义
+         *  2.React发现Demo组件是用类定义的，React实例创建了一个Demo的实例对象-D
+         *  3.通过D去调用到了render方法
+        */
+    </script>
+</body>
+</html>

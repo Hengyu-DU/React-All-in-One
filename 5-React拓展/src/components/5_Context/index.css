@@ -1,0 +1,15 @@
+.a{
+  background-color: wheat;
+}
+
+.b{
+  background-color: grey;
+}
+
+.c{
+  background-color: pink;
+}
+
+.a,.b,.c{
+  padding: 10px;
+}

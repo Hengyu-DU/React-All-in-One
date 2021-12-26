@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function demo(a,b,c){
+            console.log(a,b,c,'我在测试this：',this);
+        }
+        demo()
+        demo.call(1,10,20,30,40)
+        demo.apply(2,[10,20,30,20]) // 10 20 30 '我在测试this：' Number {2}
+        const x = demo.bind(3,10,20,30)
+        x()
+        // 功能区别：
+        // call、apply 1.改变this 2.调用
+        // bind 1.仅改变this
+
+        // 传参区别：
+        // call、bind(this,参数)
+        // apply(this,[参数])
+    </script>
+</body>
+</html>

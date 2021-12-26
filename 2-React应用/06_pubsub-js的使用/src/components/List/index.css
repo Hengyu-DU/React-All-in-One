@@ -1,0 +1,28 @@
+.album {
+  min-height: 50 rem;
+  padding-top: 3 rem;
+  padding-bottom: 3 rem;
+  background-color: #f7f7f7;
+}
+
+.card {
+  float: left;
+  width: 33.333%;
+  padding: .75 rem;
+  margin-bottom: 2rem;
+  border:1px solid #efefef;
+  text-align: center;
+}
+
+.card > img {
+  margin-bottom: .75 rem;
+  border-radius: 100px;
+}
+
+.card-text {
+  font-size: 85%;
+}
+
+.loading {
+  margin: 0 auto;
+}

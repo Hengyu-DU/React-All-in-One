@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 对象的解构赋值 ——————————————————————
+        let obj = {a:1,b:2,c:3}
+        // 传统写法:
+        // const c = obj.c
+        
+        // 解构赋值写法:
+        const {c} = obj
+        console.log('我是obj中的c：',c);
+        
+        
+        // 数组的解构赋值 ——————————————————————
+        let arr = [2,4,6,8,10]
+        // 传统写法:
+        // const x = arr[0]
+
+        // 解构赋值:
+        const [,,a] = arr
+        console.log(a);
+
+        /* ******************************************** */
+        let obj2 = {a:1, b:2, d:{x:1, y:2}}
+
+        // 正常解构赋值
+        // const {y} = obj.c
+
+        // 连续解构赋值
+        const {d:{y}} = obj2
+        console.log('我是obj2中的y：',y);
+        // console.log(d); // d is not defined
+
+        // 连续解构赋值 + 重命名
+        const {d:{y:value}} = obj2
+        console.log('我是重命名后的y：',value);
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+.Count{
+  padding: 5px;
+  background-color: wheat;
+  width: 400px;
+}
+
+.Person{
+  background-color: rgb(197, 240, 253);
+  width: 400px;
+  padding: 5px;
+}
+
+h2{
+  font-family: '幼圆';
+  color: brown;
+}
+
+select,input{
+  width: 60px;
+  height: 30px;
+  margin-right: 3px;
+}
+
+button{
+  font-family: '幼圆';
+  font-weight: bold;
+  font-size: 14px;
+  height: 30px;
+  padding: 0 5px;
+  margin:0 3px;
+}
+
+.wind{
+  margin: 10px;
+}

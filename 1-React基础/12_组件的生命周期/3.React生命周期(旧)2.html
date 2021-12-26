@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React生命周期(旧)</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <style>
+        .a{
+            width: 400px;
+            height: 400px;
+            background-color: wheat;
+        }
+        .b{
+            background-color: navy;
+            color: aliceblue;
+            width: 300px;
+            font-weight: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+
+    <script type="text/babel">
+        /**
+         * 1.初始化阶段：由ReactDOM.render()触发 --- 初次渲染
+         *      1. constructor()
+         *      2. componentWillMount()
+         *      3. render()
+         *      4. componentDidMount()
+         * 
+         * 2. 更新阶段：由组件内部this.setState()或父组件重新render触发
+         *      1. shouldComponentUpdate()
+         *      2. componentWillUpdate()
+         *      3. render()
+         *      4. componentDidUpdate()
+         * 
+         * 3. 卸载组件：由ReactDOM.unmountComponentAtNode()触发
+         *      1. componentWillUnmount()
+         * 
+        */
+        class Count extends React.Component {
+
+            // 构造器
+            constructor() {
+                console.log('constructor');
+                super()
+                this.state = {
+                    count: 0
+                }
+            }
+
+            // 业务逻辑的回调函数
+            add = () => {
+                const { count } = this.state
+                this.setState({ count: count + 1 })
+            }
+            death = () => {
+                ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+            }
+            mandate = () => {
+                this.forceUpdate()
+            }
+
+            //组件即将挂载
+            UNSAFE_componentWillMount() {
+                console.log('componentWillMount');
+            }
+            //组件挂载完毕
+            componentDidMount() {
+                // 一般做一些初始化的事情：开启定时器、发送ajax请求、消息订阅
+                console.log('componentDidMount');
+            }
+            //组件将要卸载
+            componentWillUnmount() {
+                // 一般做一些收尾的事情：关闭定时器、取消订阅消息等等
+                console.log('componentWillUnmount');
+            }
+
+
+            UNSAFE_componentWillReceiveProps(){
+                // 第一次传的不算，第二次传的才会显示
+                console.log('componentWillReceiveProps');
+            }
+
+
+            // *** 控制组件是否更新（该钩子可以进行组件的优化）
+            shouldComponentUpdate() {
+                console.log('——————shouldComponentUpdate');
+                return true
+            }
+            // *** 组件将要更新
+            UNSAFE_componentWillUpdate() {
+                console.log('componentWillUpdate');
+            }
+            // *** 组件更新完毕
+            componentDidUpdate() {
+                console.log('componentDidUpdate');
+            }
+
+            render() {
+                console.log('render');
+                return (
+                    <div>
+                        <h1>当前求和为：{this.state.count}</h1>
+                        <button onClick={this.add}>点我+1</button>
+                        <button onClick={this.death}>点我卸载组件</button>
+                        <button onClick={this.mandate}>不加不减，强制调用render</button>
+                    </div>
+                )
+            }
+        }
+
+        class A extends React.Component {
+            state = {
+                carname: '阿特兹'
+            }
+
+            changeCar = ()=>{
+                this.setState({carname:'Jeep'})
+            }
+
+            render() {
+                const { carname } = this.state
+                return (
+                    <div className="a">
+                        <h1>我是A组件，我的车是：{carname}</h1>
+                        <button onClick={this.changeCar}>换车</button>
+                        <B carname={carname} />
+                    </div>
+                )
+            }
+        }
+
+        class B extends React.Component{
+            UNSAFE_componentWillReceiveProps(){
+                // 第一次传的不算，第二次传的才会显示
+                console.log('componentWillReceiveProps');
+            }
+            shouldComponentUpdate() {
+                console.log('B-shouldComponentUpdate');
+                return true
+            }
+            UNSAFE_componentWillUpdate() {
+                console.log('B-componentWillUpdate');
+            }
+            componentDidUpdate() {
+                console.log('B-componentDidUpdate');
+            }
+
+            render(){
+                console.log('B-render');
+                return(
+                    <h3 className="b">我是B组件，我继承的车是{this.props.carname}</h3>)
+            }
+        }
+        ReactDOM.render(<Count/>, document.getElementById('test'))
+        // ReactDOM.render(<B/>, document.getElementById('test2'))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>不用高阶函数_函数柯里化</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+
+        class Login extends React.Component {
+            state = { // 初始化状态
+                username: "",
+                password: "123"
+            }
+            render() {
+                return (
+                    <form onSubmit={this.handleLogin}>
+                        {// <label htmlFor="username">用户名：</label>
+                            // <input id="username" type="text" /><br/>
+                        }
+                        用户名：<input type="texnCht" onChange={event => this.saveFormData(event, "username")} /><br />
+                        密码：<input type="password" onChange={event => this.saveFormData(event, "password")} /><br />
+                        <button>登陆</button>
+                    </form>
+                )
+            }
+
+            saveFormData = (event, type) => {
+                this.setState({ [type]: event.target.value })
+            }
+
+            handleLogin = (event) => {
+                event.preventDefault()
+                const { username, password } = this.state
+                alert(
+                    `用户名：${username}, 密码：${password}`
+                )
+            }
+        }
+
+
+        ReactDOM.render(<Login />, document.getElementById('test'))
+    </script>
+</body>
+
+</html>

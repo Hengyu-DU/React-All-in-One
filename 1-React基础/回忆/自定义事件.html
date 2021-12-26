@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="background-color: gold; width: 100px;height:100px;">hererer</div>
+
+    <script type="text/javascript">
+    const div = document.querySelector('div')
+
+    // 创建一个hh事件
+    const haha = new Event('haha')
+
+    div.addEventListener('haha',()=>{
+        console.log('你笑了');
+    })
+
+    setTimeout( ()=>{
+        div.dispatchEvent(haha)
+    },2000)
+    </script>
+</body>
+</html>

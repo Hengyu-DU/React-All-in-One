@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造器的说明</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+        /**
+         * 1.类式组件中的构造器完全可以省略
+         * 2.若写了构造器，super必须调用，且需要在构造器中通过this.props取值，
+         *      那么props要传给super
+         * 
+        */
+        class Dog extends React.Component{
+            constructor(props){
+                super(props)
+                console.log('constructor',this.props);
+            }
+            render() {
+                const {name,age} = this.props
+                return <h2>I'm a {name} dog. I'm {age} years old.</h2>
+            }
+        }
+
+        ReactDOM.render(<Dog name='WC' age="12" />,document.getElementById('test'))
+    </script>
+</body>
+</html>

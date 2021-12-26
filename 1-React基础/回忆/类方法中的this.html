@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    // ——————————————————————————————————————————
+    class Dog {
+        constructor(name,age){
+            this.name = name
+            this.age = age
+        }
+        bark(){
+            console.log('bark的this是：',this);
+            // console.log(`My name is ${this.name}, my age is ${this.age}`);
+        }
+    }
+    const d = new Dog('DOGE',4)
+    const x = d.bark
+    x() // 此处属于cry的直接调用，类中所有定义的方法，浏览器在运行时，全都加上了use strict（严格模式）
+    
+
+    // —————————————————————————————————————————
+    function demo1(){
+        'use strict' //局部开启严格模式
+        console.log('demo1:',this);
+    }
+    function demo2(){
+        console.log('demo2:',this);
+    }
+    demo1()
+    demo2()
+
+    // let obj = {
+    //     a:1,
+    //     b:2,
+    //     c:function(){
+    //         console.log(this);
+    //     }
+    // }
+    // const y = obj.c
+    // y()
+    </script>
+</body>
+</html>

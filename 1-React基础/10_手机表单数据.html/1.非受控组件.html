@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收集表单数据</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+
+        /**
+         * 非受控组件：表单中的数据，在需要的时候，“现用现取” 
+         * （通过ref获得节点，进而访问到value值）
+         */
+
+      class Login extends React.Component{
+          render(){
+              return(
+                  <form onSubmit={this.handleLogin}>
+                    {// <label htmlFor="username">用户名：</label>
+                    // <input id="username" type="text" /><br/>
+                }
+                    用户名：<input type="text" ref={c => this.userNameNode = c} /><br/>
+                    密码：<input type="password" ref={c => this.passwordNode = c}/><br/>
+                    <button>登陆</button>
+                    </form>
+              )
+          }
+
+          handleLogin = ()=>{
+              const {userNameNode,passwordNode} = this
+              console.log(userNameNode);
+              alert(
+                  `用户名：${userNameNode.value}, 密码：${passwordNode.value}`
+              ) 
+          }
+
+      }
+
+
+      ReactDOM.render(<Login/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script type="text/javascript">
+    /**
+     * 数组的reduce方法：
+     *  语法
+     *    arr.reduce((preValue, current, index, arr)=>{},initialValue)
+     *    - arr: 当前操作的数组
+     *    - preValue: 
+     *      - 第一次执行回调时为给定的初始值initialValue,
+     *      - 以后是上一次执行回调的返回值
+     *      - 备注：若没有传入initialValue，
+     *        则第一次的preValue值是数组中第一个元素的值
+     *    - current: 表示当前正在处理的元素
+     *    - index：表示当前正在处理的数组元素的索引，
+     *      - 若传入了initialValue值，则为0，否则为1
+     *    - array: 当前操作的数组（就是arr）
+     *    - initialValue： 表示初始值，一般做数学运算时设置为0，
+     *      若 筛选最值可以不传
+    */
+    let person = [
+      { id: "001", name: "Tom", age: "16" },
+      { id: "002", name: "John", age: "17" },
+      { id: "003", name: "Rechael", age: "18" },
+      { id: "004", name: "Hank", age: "19" },
+    ]
+
+    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    //reduce 可以进行累加/累乘
+    const result =
+      arr.reduce((preValue, current, index, arr) => {
+        console.log(
+          'preValue:', preValue,
+          '| current：', current,
+          '| index:', index,
+          '| arr:', arr
+        );
+        return preValue + current
+      })
+    console.log(result); // 55
+
+    //reduce 可以进行条件求和
+    const result2 =
+      arr.reduce((preValue, current) => {
+        return preValue + ( current % 2 == 0 ? current : 0)
+      },0)
+    console.log('数列偶数之和为',result2);
+    
+    //reduce 可以进行条件统计
+    const result3 =
+      arr.reduce((preValue, current) => {
+        return preValue + ( current % 2 !== 0 ? 1 : 0)
+      },0)
+    console.log('数列奇数个数为',result3,'个');
+
+    //reduce 可以筛选最值
+    const result4 =
+      arr.reduce((preValue, current) => {
+        return Math.max(preValue,current)
+      })
+    console.log('数列最大值为',result4);
+  </script>
+</body>
+
+</html>

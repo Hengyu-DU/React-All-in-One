@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React生命周期(旧)</title>
+  <!-- 引入react引入核心库, 需要按顺序引入 -->
+  <script type="text/javascript" src="../js/react.development.js"></script>
+  <!-- 引入react-dom, 用于支持react操作DOM -->
+  <script type='text/javascript' src='../js/react-dom.development.js'></script>
+  <!-- 引入babel，用于将jsx转为js -->
+  <script type='text/javascript' src='../js/babel.min.js'></script>
+
+</head>
+
+<body>
+  <div id="test"></div>
+
+  <script type="text/babel">
+
+    class Count extends React.Component {
+
+      // 初始化状态
+      constructor() {
+        console.log('constructor');
+        super()
+        this.state = {
+          count: 0
+        }
+      }
+
+      // 加法的回调函数
+      add = () => {
+        const { count } = this.state
+        this.setState({ count: count + 1 })
+      }
+      death = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('test'))
+      }
+      mandate = () => {
+        this.forceUpdate()
+      }
+
+      //组件即将挂载
+      UNSAFE_componentWillMount() {
+        console.log('componentWillMount');
+      }
+      //组件挂载完毕
+      componentDidMount() {
+        console.log('componentDidMount');
+      }
+      //组件将要卸载
+      componentWillUnmount() {
+        console.log('componentWillUnmount');
+      }
+
+      // *** 控制组件是否更新（该钩子可以进行组件的优化）
+      shouldComponentUpdate() {
+        console.log('——————shouldComponentUpdate');
+        return false
+      }
+      // *** 组件将要更新
+      UNSAFE_componentWillUpdate() {
+        console.log('componentWillUpdate');
+      }
+      // *** 组件更新完毕
+      componentDidUpdate() {
+        console.log('componentDidUpdate');
+      }
+
+      render() {
+        console.log('render');
+        return (
+          <div>
+            <h1>当前求和为：{this.state.count}</h1>
+            <button onClick={this.add}>点我+1</button>
+            <button onClick={this.death}>点我卸载组件</button>
+            <button onClick={this.mandate}>不加不减，强制调用render</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Count />, document.getElementById('test'))
+
+  </script>
+</body>
+
+</html>

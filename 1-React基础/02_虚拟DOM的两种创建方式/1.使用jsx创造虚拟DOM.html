@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Hello_react</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type='text/babel'> 
+        // 1. 创建一个虚拟DOM
+        let VDOM = (
+            <h1 id="atguigu">
+            <span>Hello, React！</span>
+            </h1>
+            )
+        // 2. 让React 将虚拟DOM（VDOM）插入页面
+        ReactDOM.render(VDOM,document.getElementById('test'))
+    </script>
+    <!-- 
+        关于jsx：
+            1. jsx的出现，就是为了让程序员更加方便的创建虚拟DOM
+            2. jsx最终经过babel的编译，变成了最原始的js写法
+     -->
+
+
+</body>
+</html>

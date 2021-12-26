@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式组件使用props</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+    <!-- 引入prop-types，用于对标签属性进行限制-->
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+</head>
+
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+
+        function Person(props) {  // 用参数传入props
+            const { name, age, sex } = props
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{sex}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+        // 限制只能写在外面
+        Person.propTypes = {
+            name: PropTypes.string.isRequired, // .isRequired要求必须传
+            age: PropTypes.number,
+            asex: PropTypes.string
+        }
+        Person.defaultProps = { // 默认值
+            age: 18
+        }
+
+        const p1 = {
+            name: 'Nicolas',
+            sex: 'male',
+            age: 27,
+        }
+        ReactDOM.render(<Person {...p1} />, document.getElementById('test'))
+
+
+    </script>
+</body>
+
+</html>

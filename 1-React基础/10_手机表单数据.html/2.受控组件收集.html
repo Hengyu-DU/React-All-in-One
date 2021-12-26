@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>受控组件收集表单数据</title>
+    <!-- 引入react引入核心库, 需要按顺序引入 -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 引入react-dom, 用于支持react操作DOM -->
+    <script type='text/javascript' src='../js/react-dom.development.js'></script>
+    <!-- 引入babel，用于将jsx转为js -->
+    <script type='text/javascript' src='../js/babel.min.js'></script>
+
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+
+        /**
+         * 非受控组件：表单中的数据，在需要的时候，“现用现取” 
+         * （通过ref获得节点，进而访问到value值）
+         * 
+         * 受控组件：表单中输入类的DOM，随着用户的输入，
+         * 将值自动收集到State中，那么就称为受控组件
+         */
+
+      class Login extends React.Component{
+          state = {
+              username: "",
+              password: "123"
+          }
+          render(){
+              return(
+                  <form onSubmit={this.handleLogin}>
+                    {// <label htmlFor="username">用户名：</label>
+                    // <input id="username" type="text" /><br/>
+                }
+                    用户名：<input type="text" onChange={this.saveUsername} /><br/>
+                    密码：<input type="password" onChange={this.savePassword} /><br/>
+                    <button>登陆</button>
+                    </form>
+              )
+          }
+          // 保存用户名到State中
+          saveUsername = (event)=>{
+              this.setState({username:event.target.value})
+          }
+          // 保存密码到state中
+          savePassword = (event)=>{
+              this.setState({password:event.target.value})
+          }
+          handleLogin = (event)=>{
+              event.preventDefault()
+              const {username,password} = this.state
+              alert(
+                  `用户名：${username}, 密码：${password}`
+              ) 
+          }
+
+      }
+
+
+      ReactDOM.render(<Login/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

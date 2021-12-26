@@ -1,0 +1,23 @@
+h2{
+  font-family: '幼圆';
+  color: brown;
+}
+
+select{
+  width: 60px;
+  height: 30px;
+  margin-right: 3px;
+}
+
+button{
+  font-family: '幼圆';
+  font-weight: bold;
+  font-size: 14px;
+  height: 30px;
+  padding: 0 5px;
+  margin:0 3px;
+}
+
+.wind{
+  margin: 10px;
+}
