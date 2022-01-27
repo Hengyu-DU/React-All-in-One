@@ -138,6 +138,8 @@ export default connect(mapStateToProps,mapDispatchToProps)(CountUI)
 
 * Provider同时有store.subscribe的功能,因此subscribe也可删去。
 
+* 因为Provider直接包裹了App，ReactDOM的render只有一次，所以App初次挂载时产生的变化也能被监测到。
+
 ```js
 import React from "react"
 import ReactDOM from "react-dom"
